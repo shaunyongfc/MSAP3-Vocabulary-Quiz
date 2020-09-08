@@ -6,28 +6,47 @@
 {% block body %}
 <div class="container">
 		<div class="row">
-				<div class="col-sm-12 text-center">
-						<form method="POST" enctype="multipart/form-data">
-								<div class="language">
-										<select id="language" class="form-control" name="language">
-												<option value="en">English</option>
-												<option value="zh-Hant">Chinese (simplified)</option>
-												<option value="zh-Hans">Chinese (traditional)</option>
-												<option value="fr">French</option>
-												<option value="de">German</option>
-												<option value="it">Italian</option>
-												<option value="ja">Japanese</option>
-												<option value="ko">Korean</option>
-												<option value="pt">Portugese</option>
-												<option value="es">Spanish</option>
-										</select>
-								</div>
-								<div class="new-word-input">
-										<input type="text" id="word" name="word">
-										<input type="submit" id="submit-button" value="Submit">
-								</div>
-						</form>
+				<form method="POST" enctype="multipart/form-data">
+						<div class="language">
+								<select id="language" class="form-control" name="language">
+										<option value="en">English</option>
+										<option value="zh-Hant">Chinese (simplified)</option>
+										<option value="zh-Hans">Chinese (traditional)</option>
+										<option value="fr">French</option>
+										<option value="de">German</option>
+										<option value="it">Italian</option>
+										<option value="ja">Japanese</option>
+										<option value="ko">Korean</option>
+										<option value="pt">Portugese</option>
+										<option value="es">Spanish</option>
+								</select>
+						</div>
+						<div class="new-word-input">
+								<input type="text" id="word" name="word">
+								<input type="submit" id="submit-button" value="Submit">
+						</div>
+				</form>
+				<table>
+						<tr>
+								<th>Word</th>
+								<th>Meaning</th>
+								<th>Delete</th>
+						</tr>
+						{% for word in words %}
+								<tr>
+										<td>{{ word.word }}</td>
+										<td>{{ word.meaning }}</td>
+										<td>
+												<a href="/delete/{{word.id}}">
+														Delete
+												</a>
+										</td>
+								</tr>
+						{% endfor %}
+				</table>
+				<div class="take-quiz">
+						<input type="submit" id="take-quiz" value="Take Quiz!">
 				</div>
-		</div>
+</div>
 </div>
 {% endblock %}
