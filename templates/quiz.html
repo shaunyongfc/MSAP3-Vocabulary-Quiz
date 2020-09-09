@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<form action="/quiz/" method="POST" enctype="multipart/form-data">
+		<table>
+			<tr>
+				<th>Word</th>
+				<th>Meaning?</th>
+				{% if feedbacks %}
+					<th>Feedback</th>
+				{% endif %}
+			</tr>
+			{% for vocab in vocabs %}
+				<tr>
+					<td>{{ vocab.word }}</td>
+					<td>
+						{% if answers %}
+							{{ answers.pop(0) }}
+						{% else %}
+							<select id={{vocab.word}} class="form-control" name={{vocab.word}}>
+								<option value="" selected hidden></option>
+								{% for meaning in meaning_shuffled %}
+									<option value={{meaning}}>{{meaning}}</option>
+								{% endfor %}
+							</select>
+						{% endif %}
+					</td>
+					{% if feedbacks %}
+						<td>{{ feedbacks.pop(0) }}</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+		</table>
+		{% if not feedbacks %}
+			<input type="submit" id="evaluate" name="Evaluate" value="Evaluate">
+		{% endif %}
+	</form>
+	{% if feedbacks %}
+		<form action="/quiz/retry/" method="POST">
+			<input type="submit" id="retry" name="Retry" value="Retry">
+		</form>
+	{% endif %}
+</div>
+<div class="back">
+	<a href="/">
+		Back to Index
+	</a>
+</div>
+{% endblock %}

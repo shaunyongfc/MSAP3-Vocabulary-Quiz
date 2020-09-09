@@ -5,48 +5,48 @@
 
 {% block body %}
 <div class="container">
-		<div class="row">
-				<form method="POST" enctype="multipart/form-data">
-						<div class="language">
-								<select id="language" class="form-control" name="language">
-										<option value="en">English</option>
-										<option value="zh-Hant">Chinese (simplified)</option>
-										<option value="zh-Hans">Chinese (traditional)</option>
-										<option value="fr">French</option>
-										<option value="de">German</option>
-										<option value="it">Italian</option>
-										<option value="ja">Japanese</option>
-										<option value="ko">Korean</option>
-										<option value="pt">Portugese</option>
-										<option value="es">Spanish</option>
-								</select>
-						</div>
-						<div class="new-word-input">
-								<input type="text" id="word" name="word">
-								<input type="submit" id="submit-button" value="Submit">
-						</div>
-				</form>
-				<table>
-						<tr>
-								<th>Word</th>
-								<th>Meaning</th>
-								<th>Delete</th>
-						</tr>
-						{% for word in words %}
-								<tr>
-										<td>{{ word.word }}</td>
-										<td>{{ word.meaning }}</td>
-										<td>
-												<a href="/delete/{{word.id}}">
-														Delete
-												</a>
-										</td>
-								</tr>
-						{% endfor %}
-				</table>
-				<div class="take-quiz">
-						<input type="submit" id="take-quiz" value="Take Quiz!">
-				</div>
-</div>
+	<div class="new-word-input">
+		<form action="/" method="POST" enctype="multipart/form-data">
+			<div class="language">
+				<select id="language" class="form-control" name="language">
+					<option value="en"{% if language == "en" %} selected="selected" {% endif %}>English</option>
+					<option value="zh-Hant"{% if language == "zh-Hant" %} selected="selected" {% endif %}>Chinese (simplified)</option>
+					<option value="zh-Hans"{% if language == "zh-Hans" %} selected="selected" {% endif %}>Chinese (traditional)</option>
+					<option value="fr"{% if language == "fr" %} selected="selected" {% endif %}>French</option>
+					<option value="de"{% if language == "de" %} selected="selected" {% endif %}>German</option>
+					<option value="it"{% if language == "it" %} selected="selected" {% endif %}>Italian</option>
+					<option value="ja"{% if language == "ja" %} selected="selected" {% endif %}>Japanese</option>
+					<option value="ko"{% if language == "ko" %} selected="selected" {% endif %}>Korean</option>
+					<option value="pt"{% if language == "pt" %} selected="selected" {% endif %}>Portugese</option>
+					<option value="es"{% if language == "es" %} selected="selected" {% endif %}>Spanish</option>
+				</select>
+			</div>
+			<input type="text" id="word" name="word">
+			<input type="submit" id="translate-add" name="Translate" value="Translate & Add">
+		</form>
+	</div>
+	<table>
+		<tr>
+			<th>Word</th>
+			<th>Meaning</th>
+			<th>Delete</th>
+		</tr>
+		{% for vocab in vocabs %}
+			<tr>
+				<td>{{ vocab.word }}</td>
+				<td>{{ vocab.meaning }}</td>
+				<td>
+					<a href="/delete/{{vocab.id}}">
+						Delete
+					</a>
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+	<div class="take-quiz">
+		<form action="/" method="POST" enctype="multipart/form-data">
+			<input type="submit" id="take-quiz" name="Quiz" value="Take Quiz">
+		</form>
+	</div>
 </div>
 {% endblock %}
