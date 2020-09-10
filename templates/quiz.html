@@ -36,18 +36,16 @@
 			{% endfor %}
 		</table>
 		{% if not feedbacks %}
-			<input type="submit" id="evaluate" name="Evaluate" value="Evaluate">
+			<input type="submit" class="button" id="evaluate" name="Evaluate" value="Evaluate">
 		{% endif %}
 	</form>
 	{% if feedbacks %}
 		<form action="/quiz/retry/" method="POST">
-			<input type="submit" id="retry" name="Retry" value="Retry">
+			<input type="submit" class="button" id="retry" name="Retry" value="Retry">
 		</form>
 	{% endif %}
-</div>
-<div class="back">
-	<a href="/">
-		Back to Index
-	</a>
+	<form action="/" method="POST">
+			<input type="submit" class="button" id="back" name="Back" value="Back to Index">
+	</form>
 </div>
 {% endblock %}
