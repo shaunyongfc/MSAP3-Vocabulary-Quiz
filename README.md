@@ -8,3 +8,5 @@ This project uses Flask as well as Translate Text from Azure Cognitive Services 
 - User can attempt to retry the quiz or go back to the index page to modify Vocab list.
 
 This project is run directly with $flask run or $python app.py.
+
+A finished version is hosted in Herokuapp at https://msa3-vocab-quiz.herokuapp.com/.
