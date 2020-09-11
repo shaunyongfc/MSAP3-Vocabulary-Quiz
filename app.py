@@ -8,7 +8,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///foo.db'
 app.secret_key = "abcdefg"
 db = SQLAlchemy(app)
-translate_key = os.environ['TRANSLATE_KEY']
+translate_key = '211e5dad97af4405a855ca6f77032902' #os.environ['TRANSLATE_KEY']
 language = 'en' # default value for translation
 
 # db class to store words requested for translations
@@ -119,4 +119,4 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico',mimetype='image/vnd.microsoft.icon')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
