@@ -8,7 +8,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///foo.db'
 app.secret_key = "abcdefg"
 db = SQLAlchemy(app)
-translate_key = '211e5dad97af4405a855ca6f77032902' #os.environ['TRANSLATE_KEY']
+translate_key = os.environ['TRANSLATE_KEY']
 language = 'en' # default value for translation
 
 # db class to store words requested for translations
